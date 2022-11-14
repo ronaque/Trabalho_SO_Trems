@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>977</width>
-    <height>519</height>
+    <height>581</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QLabel" name="label_trem1">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>30</y>
+      <x>60</x>
+      <y>100</y>
       <width>21</width>
       <height>16</height>
      </rect>
@@ -98,7 +98,7 @@
     <property name="geometry">
      <rect>
       <x>360</x>
-      <y>390</y>
+      <y>480</y>
       <width>99</width>
       <height>27</height>
      </rect>
@@ -111,7 +111,7 @@
     <property name="geometry">
      <rect>
       <x>480</x>
-      <y>390</y>
+      <y>480</y>
       <width>98</width>
       <height>27</height>
      </rect>
@@ -171,8 +171,8 @@
    <widget class="QLabel" name="label_trem2">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>150</y>
+      <x>580</x>
+      <y>30</y>
       <width>21</width>
       <height>16</height>
      </rect>
@@ -300,9 +300,9 @@
     <property name="geometry">
      <rect>
       <x>190</x>
-      <y>160</y>
+      <y>166</y>
       <width>21</width>
-      <height>137</height>
+      <height>131</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -422,10 +422,10 @@
    <widget class="QLabel" name="label_trem4">
     <property name="geometry">
      <rect>
-      <x>600</x>
+      <x>590</x>
       <y>280</y>
       <width>21</width>
-      <height>17</height>
+      <height>16</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -441,7 +441,7 @@
       <x>190</x>
       <y>220</y>
       <width>21</width>
-      <height>17</height>
+      <height>16</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -449,6 +449,146 @@
     </property>
     <property name="text">
      <string>T5</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="horizontalSlider_2">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>340</y>
+      <width>160</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 0, 0);</string>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>500</number>
+    </property>
+    <property name="value">
+     <number>250</number>
+    </property>
+    <property name="sliderPosition">
+     <number>250</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QSlider" name="horizontalSlider_3">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>360</y>
+      <width>160</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(0, 0, 255);</string>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>500</number>
+    </property>
+    <property name="value">
+     <number>250</number>
+    </property>
+    <property name="sliderPosition">
+     <number>250</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QSlider" name="horizontalSlider_4">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>380</y>
+      <width>160</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 0, 255);</string>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>500</number>
+    </property>
+    <property name="value">
+     <number>250</number>
+    </property>
+    <property name="sliderPosition">
+     <number>250</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QSlider" name="horizontalSlider_5">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>400</y>
+      <width>160</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 85, 0);</string>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>500</number>
+    </property>
+    <property name="value">
+     <number>250</number>
+    </property>
+    <property name="sliderPosition">
+     <number>250</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QSlider" name="horizontalSlider">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>320</y>
+      <width>160</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(0, 255, 0);</string>
+    </property>
+    <property name="maximum">
+     <number>500</number>
+    </property>
+    <property name="value">
+     <number>250</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="invertedAppearance">
+     <bool>false</bool>
+    </property>
+    <property name="invertedControls">
+     <bool>true</bool>
     </property>
    </widget>
    <zorder>label_trilho1</zorder>
@@ -473,6 +613,11 @@
    <zorder>label_trem4</zorder>
    <zorder>label_trem5</zorder>
    <zorder>label_trem2</zorder>
+   <zorder>horizontalSlider_2</zorder>
+   <zorder>horizontalSlider_3</zorder>
+   <zorder>horizontalSlider_4</zorder>
+   <zorder>horizontalSlider_5</zorder>
+   <zorder>horizontalSlider</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

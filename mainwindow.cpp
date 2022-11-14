@@ -8,11 +8,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     //Cria o trem com seu (ID, posição X, posição Y)
-    trem1 = new Trem(1, 300, 30, 60);
-    trem2 = new Trem(2, 380, 150, 50);
-    trem3 = new Trem(3, 870, 90, 100);
-    trem4 = new Trem(4, 600, 280, 100);
-    trem5 = new Trem(5, 190, 220, 100);
+    trem1 = new Trem(1, 60, 100, ui->horizontalSlider->value());
+    trem2 = new Trem(2, 460, 30, ui->horizontalSlider_2->value());
+    trem3 = new Trem(3, 870, 100, ui->horizontalSlider_3->value());
+    trem4 = new Trem(4, 590, 280, ui->horizontalSlider_4->value());
+    trem5 = new Trem(5, 190, 220, ui->horizontalSlider_5->value());
 
     /*
      * Conecta o sinal UPDATEGUI à função UPDATEINTERFACE.
@@ -78,4 +78,37 @@ void MainWindow::on_pushButton_2_clicked()
     trem3->terminate();
     trem4->terminate();
     trem5->terminate();
+}
+
+// Slide Verde (trem 1)
+void MainWindow::on_horizontalSlider_valueChanged(int value)
+{
+    trem1->setVelocidade(value, ui->horizontalSlider->maximum());
+}
+
+// Slide vermelho (trem 2)
+void MainWindow::on_horizontalSlider_2_valueChanged(int value)
+{
+    trem2->setVelocidade(value, ui->horizontalSlider_2->maximum());
+}
+
+// Slide azul (trem 3)
+void MainWindow::on_horizontalSlider_3_valueChanged(int value)
+{
+    trem3->setVelocidade(value, ui->horizontalSlider_3->maximum());
+}
+// Slide roxo (trem 4)
+void MainWindow::on_horizontalSlider_4_valueChanged(int value)
+{
+    trem4->setVelocidade(value, ui->horizontalSlider_4->maximum());
+}
+// Slide laranja (trem5)
+void MainWindow::on_horizontalSlider_5_valueChanged(int value)
+{
+    trem5->setVelocidade(value, ui->horizontalSlider_5->maximum());
+}
+
+void MainWindow::on_horizontalSlider_3_sliderMoved(int position)
+{
+
 }

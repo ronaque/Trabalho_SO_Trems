@@ -18,6 +18,13 @@ Trem::Trem(int ID, int x, int y, int velocidade){
     this->velocidade = velocidade;
 }
 
+void Trem::setVelocidade(int velocidade, int maxSlide){
+    if (velocidade == 0)
+        this->velocidade = 10000;
+    else
+        this->velocidade = maxSlide - velocidade;
+}
+
 //Função a ser executada após executar trem->START
 void Trem::run(){
     sem_init(&sem0, 0, 1);
@@ -30,16 +37,23 @@ void Trem::run(){
     while(true){
         switch(ID){
         case 1:     //Trem 1
-            if (y == 30 && x <330)
-                x+=10; 
-            else if (x == 330 && y < 150){
-                if (y == 30)
+            if (y == 30 && x <330) {
+                if (x == 310) {
                     sem_wait(&sem0);
+                }
+                x+=10; 
+            }
+            else if (x == 330 && y < 150){
+                if (y == 130){
+                    sem_wait(&sem2);
+                }
                 y+=10;  // Vertical direita (Crítico)
             }
             else if (x > 60 && y == 150) {
-                if (x == 330)
+                if (x == 310){
                     sem_post(&sem0);
+                } else if (x == 170)
+                    sem_post(&sem2);
                 x-=10;  // Horizontal baixo (Crítico)
             }
             else
@@ -48,52 +62,124 @@ void Trem::run(){
             break;
         case 2: //Trem 2
             if (y == 30 && x <600) {
-                if (x == 330)
+                if (x == 350) {
                     sem_post(&sem0);
+                } else if (x == 580){
+                    sem_wait(&sem1);
+                }
                 x+=10;
             }
-            else if (x == 600 && y < 150)
+            else if (x == 600 && y < 150) {
+                if (y == 130){
+                    sem_wait(&sem4);
+                }
                 y+=10;  // (Crítico)
-            else if (x > 330 && y == 150)
+            }
+            else if (x > 330 && y == 150) {
+                    if (x == 580){
+                        sem_post(&sem1);
+                    } else if (x == 480){
+                        sem_wait(&sem3);
+                    } else if (x == 440) {
+                        sem_post(&sem4);
+                    } else if (x == 350){
+                        sem_wait(&sem0);
+                    }
                 x-=10;  // (Crítico)
+            }
             else {
+                if (y == 130){
+                    sem_post(&sem3);
+                }
                 y-=10;  // (Crítico)
-                if (y == 140)
-                    sem_wait(&sem0);
             }
             emit updateGUI(ID, x,y);    //Emite um sinal
             break;
         case 3: //Trem 3
-            if (y == 30 && x < 870)
+            if (y == 30 && x < 870) {
+                if (x == 620){
+                    sem_post(&sem1);
+                }
                 x+=10;
+            }
             else if (x == 870 && y < 150)
                 y+=10;
-            else if (x > 600 && y == 150)
+            else if (x > 600 && y == 150){
+                if (x == 750) {
+                    sem_wait(&sem5);
+                } else if (x == 620){
+                    sem_wait(&sem1);
+                }
                 x-=10;  // (Crítico)
-            else
+            }
+            else {
+                if (y == 130) {
+                    sem_post(&sem5);
+                }
                 y-=10;  // (Crítico)
+            }
             emit updateGUI(ID, x,y);    //Emite um sinal
             break;
         case 4: //Trem 4
-            if (y == 150 && x < 730)
+            if (y == 150 && x < 730){
+                if (x == 480){
+                    sem_post(&sem6);
+                } else if (x == 580) {
+                    sem_wait(&sem5);
+                } else if (x == 620) {
+                    sem_post(&sem4);
+                }
                 x+=10;  // (Crítico)
-            else if (x == 730 && y < 280)
+            }
+            else if (x == 730 && y < 280) {
+                if (y == 170){
+                    sem_post(&sem5);
+                }
                 y+=10;
-            else if (x > 460 && y == 280)
+            }
+            else if (x > 460 && y == 280) {
+                if (x == 480){
+                    sem_wait(&sem6);
+                }
                 x-=10;
-            else
+            }
+            else {
+                if (y == 170) {
+                    sem_wait(&sem4);
+                }
                 y-=10;  // (Crítico)
+            }
             emit updateGUI(ID, x,y);    //Emite um sinal
             break;
         case 5: //Trem 5
-            if (y == 150 && x < 460)
+            if (y == 150 && x < 460){
+                if (x == 310) {
+                    sem_wait(&sem3);
+                } else if (x == 350) {
+                    sem_post(&sem2);
+                } else if (x == 440) {
+                    sem_wait(&sem6);
+                }
                 x+=10;  // (Crítico)
-            else if (x == 460 && y < 280)
+            }
+            else if (x == 460 && y < 280) {
+                if (y == 170){
+                    sem_post(&sem3);
+                }
                 y+=10;  // (Crítico)
-            else if (x > 190 && y == 280)
+            }
+            else if (x > 190 && y == 280) {
+                if (x == 440){
+                    sem_post(&sem6);
+                }
                 x-=10;
-            else
+            }
+            else {
+                if (y == 170) {
+                    sem_wait(&sem2);
+                }
                 y-=10;
+            }
             emit updateGUI(ID, x,y);    //Emite um sinal
             break;
         default:
@@ -102,7 +188,3 @@ void Trem::run(){
         msleep(velocidade);
     }
 }
-
-
-
-
