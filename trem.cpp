@@ -40,12 +40,13 @@ void Trem::run(){
             if (y == 30 && x <330) {
                 if (x == 310) {
                     sem_wait(&sem0);
+                    sem_wait(&sem2);
                 }
                 x+=10; 
             }
             else if (x == 330 && y < 150){
                 if (y == 130){
-                    sem_wait(&sem2);
+                    
                 }
                 y+=10;  // Vertical direita (Crítico)
             }
@@ -66,12 +67,14 @@ void Trem::run(){
                     sem_post(&sem0);
                 } else if (x == 580){
                     sem_wait(&sem1);
+                    sem_wait(&sem4);
+                    sem_wait(&sem3);
                 }
                 x+=10;
             }
             else if (x == 600 && y < 150) {
                 if (y == 130){
-                    sem_wait(&sem4);
+                    
                 }
                 y+=10;  // (Crítico)
             }
@@ -79,7 +82,7 @@ void Trem::run(){
                     if (x == 580){
                         sem_post(&sem1);
                     } else if (x == 480){
-                        sem_wait(&sem3);
+                        
                     } else if (x == 440) {
                         sem_post(&sem4);
                     } else if (x == 350){
@@ -107,8 +110,8 @@ void Trem::run(){
             else if (x > 600 && y == 150){
                 if (x == 750) {
                     sem_wait(&sem5);
-                } else if (x == 620){
                     sem_wait(&sem1);
+                } else if (x == 620){
                 }
                 x-=10;  // (Crítico)
             }
@@ -125,7 +128,7 @@ void Trem::run(){
                 if (x == 480){
                     sem_post(&sem6);
                 } else if (x == 580) {
-                    sem_wait(&sem5);
+                    
                 } else if (x == 620) {
                     sem_post(&sem4);
                 }
@@ -140,12 +143,14 @@ void Trem::run(){
             else if (x > 460 && y == 280) {
                 if (x == 480){
                     sem_wait(&sem6);
+                    sem_wait(&sem4);
+                    sem_wait(&sem5);
                 }
                 x-=10;
             }
             else {
                 if (y == 170) {
-                    sem_wait(&sem4);
+                    
                 }
                 y-=10;  // (Crítico)
             }
@@ -154,11 +159,11 @@ void Trem::run(){
         case 5: //Trem 5
             if (y == 150 && x < 460){
                 if (x == 310) {
-                    sem_wait(&sem3);
+                    
                 } else if (x == 350) {
                     sem_post(&sem2);
                 } else if (x == 440) {
-                    sem_wait(&sem6);
+                    
                 }
                 x+=10;  // (Crítico)
             }
@@ -177,6 +182,8 @@ void Trem::run(){
             else {
                 if (y == 170) {
                     sem_wait(&sem2);
+                    sem_wait(&sem3);
+                    sem_wait(&sem6);
                 }
                 y-=10;
             }
