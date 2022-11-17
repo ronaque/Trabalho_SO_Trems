@@ -17,6 +17,17 @@ Trem::Trem(int ID, int x, int y, int velocidade)
     this->x = x;
     this->y = y;
     this->velocidade = velocidade;
+
+    if (ID == 1)
+    {
+        sem_init(&sem0, 0, 1);
+        sem_init(&sem1, 0, 1);
+        sem_init(&sem2, 0, 1);
+        sem_init(&sem3, 0, 1);
+        sem_init(&sem4, 0, 1);
+        sem_init(&sem5, 0, 1);
+        sem_init(&sem6, 0, 1);
+    }
 }
 
 void Trem::setVelocidade(int velocidade, int maxSlide)
@@ -27,13 +38,6 @@ void Trem::setVelocidade(int velocidade, int maxSlide)
 // Função a ser executada após executar trem->START
 void Trem::run()
 {
-    sem_init(&sem0, 0, 1);
-    sem_init(&sem1, 0, 1);
-    sem_init(&sem2, 0, 1);
-    sem_init(&sem3, 0, 1);
-    sem_init(&sem4, 0, 1);
-    sem_init(&sem5, 0, 1);
-    sem_init(&sem6, 0, 1);
     while (true)
     {
         switch (ID)
